@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ForestWild Consultants LLC | Forest Management &amp; Wildlife Services</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&amp;family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&amp;family=Cinzel:wght@700&amp;family=Barlow+Condensed:ital,wght@1,700;1,800&amp;display=swap" rel="stylesheet"/>
+<style>
+  /* Force text visible even if fonts fail to load */
+  .hero-title, .about-heading, .section-header h2, .why-text h2,
+  .area-inner h2, .contact-info h2, .service-card h3, .owner-quote,
+  .about-sig, .pillar-body h4 {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important;
+  }
+  .hero-title {
+    font-family: 'Cinzel', Georgia, 'Times New Roman', serif !important;
+  }
+  body, nav, .nav-links, .btn-primary, .btn-outline, .tab-btn,
+  .service-card p, .about-text, .why-text p, .pillar-body p,
+  .area-inner p, .contact-info p, .contact-detail-text, .form-field label,
+  .hero-subtitle, .hero-eyebrow, .hero-territory p {
+    font-family: 'DM Sans', Arial, Helvetica, sans-serif !important;
+  }
+</style>
+<style>
+  :root {
+    --bark: #2C1A0E;
+    --bark-light: #4A2E1A;
+    --canopy: #1C3A1E;
+    --canopy-mid: #2D5A30;
+    --canopy-light: #4A7C4E;
+    --lichen: #8FAF72;
+    --gold: #C8973A;
+    --gold-light: #E8B85A;
+    --cream: #F5EFE0;
+    --parchment: #EDE4D0;
+    --fog: #D4CFC4;
+    --stone: #7A7468;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bark);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(28,10,4,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .nav-logo img {
+    height: 64px;
+    width: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    transition: transform 0.3s;
+  }
+  .nav-logo img:hover { transform: scale(1.04); }
+  .nav-logo span { display: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--fog); font-size: 0.82rem; text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--bark);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(44,90,48,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(74,46,26,0.4) 0%, transparent 60%),
+      linear-gradient(160deg, #0D0905 0%, #1C3A1E 40%, #2C1A0E 100%);
+  }
+  /* Tree silhouettes via SVG inline */
+  .hero-trees {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 4rem;
+    padding-top: 6rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--lichen); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--lichen);
+  }
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 0.3em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .hero-title .drop-f,
+  .hero-title .drop-w {
+    font-size: 1.45em;
+    line-height: 0.75;
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--gold);
+  }
+  .hero-title .rest {
+    color: var(--gold);
+  }
+  .hero-title .accent {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.28em;
+    font-weight: 400;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    margin-top: 0.7em;
+    color: var(--lichen);
+  }
+  .hero-title .tagline {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.2em;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-top: 0.4em;
+    color: var(--fog);
+  }
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    color: var(--fog);
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+  .hero-cta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bark);
+    padding: 0.9rem 2.2rem;
+    font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid var(--canopy-light);
+    color: var(--lichen);
+    padding: 0.9rem 2.2rem;
+    font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--lichen); color: var(--cream); transform: translateY(-2px); }
+
+  .hero-territory {
+    margin-top: 2.5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-territory p { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); line-height: 1.8; }
+  .hero-territory strong { color: var(--lichen); }
+  .hero-territory::before { content: ""; display: block; width: 30px; height: 1px; background: var(--stone); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 100%; height: 3px;
+    background: linear-gradient(to right, transparent, var(--canopy-mid), var(--gold), var(--canopy-mid), transparent);
+    opacity: 0.5;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--canopy);
+    padding: 5rem 4rem;
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .about-label {
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lichen);
+    margin-bottom: 1rem;
+  }
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    color: var(--cream);
+    font-weight: 700;
+  }
+  .about-heading em { color: var(--gold); font-style: italic; }
+  .about-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; line-height: 1.85; color: var(--fog);
+    margin-bottom: 1.5rem;
+  }
+  .about-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.3rem; color: var(--gold);
+  }
+
+  /* ── SERVICES ── */
+  .services-section {
+    background: var(--bark);
+    padding: 7rem 4rem;
+  }
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 4rem; }
+  .section-header .label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lichen); margin-bottom: 0.8rem; }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: var(--cream); font-weight: 700;
+  }
+  .section-header h2 span { color: var(--gold); }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--bark-light); }
+  .service-card {
+    background: var(--bark);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.4s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, var(--canopy-mid), var(--lichen));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover { background: var(--bark-light); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; color: var(--cream); margin-bottom: 0.8rem; font-weight: 700;
+  }
+  .service-card p { font-size: 0.9rem; color: var(--stone); line-height: 1.75; }
+
+  /* ── WHY US ── */
+  .why-section {
+    background: linear-gradient(135deg, var(--canopy) 0%, #1A2F1C 100%);
+    padding: 7rem 4rem;
+  }
+  .why-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .why-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--cream); margin-bottom: 1.5rem; font-weight: 700; }
+  .why-text h2 span { color: var(--gold); }
+  .why-text p { font-family: 'DM Sans', sans-serif; font-size: 0.97rem; color: var(--fog); line-height: 1.85; margin-bottom: 1rem; }
+  .pillars { display: flex; flex-direction: column; gap: 1.5rem; }
+  .pillar { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 900; color: var(--canopy-light);
+    line-height: 1; min-width: 2.5rem; opacity: 0.6;
+  }
+  .pillar-body h4 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .pillar-body p { font-size: 0.88rem; color: var(--fog); line-height: 1.7; }
+
+  /* ── SERVICE AREA ── */
+  .area-section {
+    background: var(--bark);
+    padding: 6rem 4rem;
+    text-align: center;
+  }
+  .area-inner { max-width: 900px; margin: 0 auto; }
+  .area-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--cream); margin-bottom: 1.5rem; }
+  .area-inner h2 span { color: var(--gold); }
+  .area-inner p { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--fog); line-height: 1.8; margin-bottom: 3rem; }
+  .states-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .state-badge {
+    border: 1px solid var(--canopy-mid);
+    padding: 0.8rem 1.8rem;
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lichen);
+    position: relative; transition: all 0.3s;
+  }
+  .state-badge.primary { border-color: var(--gold); color: var(--gold); }
+  .state-badge:hover { background: var(--canopy-mid); color: var(--cream); }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--canopy);
+    padding: 7rem 4rem;
+  }
+  .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .contact-info h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--cream); margin-bottom: 1.5rem; }
+  .contact-info h2 span { color: var(--gold); }
+  .contact-info p { font-family: 'DM Sans', sans-serif; font-size: 0.97rem; color: var(--fog); line-height: 1.8; margin-bottom: 2rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-detail { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-detail-icon { color: var(--gold); font-size: 1.1rem; margin-top: 0.1rem; }
+  .contact-detail-text { font-size: 0.9rem; color: var(--fog); line-height: 1.6; }
+  .contact-detail-text strong { display: block; color: var(--cream); font-family: 'Cormorant Garamond', serif; margin-bottom: 0.2rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--lichen); }
+  .form-field input, .form-field select, .form-field textarea {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--canopy-light);
+    color: var(--cream);
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.3s;
+    outline: none;
+    resize: vertical;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+  .form-field select option { background: var(--canopy); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0D0906;
+    padding: 3rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+  .footer-logo span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; color: var(--stone); text-transform: uppercase; margin-top: 0.25rem; font-weight: 400; }
+  .footer-text { font-size: 0.75rem; color: var(--stone); line-height: 1.7; text-align: center; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--lichen); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+
+  /* ── RESPONSIVE ── */
+
+  /* Tablet (600px–900px) */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 1.5rem; padding-top: 5rem; }
+    .hero-territory { margin-top: 1.5rem; }
+    .about-strip { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem; }
+    .why-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-section, .why-section, .area-section, .contact-section { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .timber-intro { max-width: 100%; }
+  }
+
+  /* Mobile (up to 600px) */
+  @media (max-width: 600px) {
+    /* Nav */
+    nav { padding: 0.8rem 1rem; }
+    .nav-logo img { height: 44px; }
+
+    /* Hero */
+    .hero { min-height: 100svh; }
+    .hero-content { padding: 0 1rem; padding-top: 4rem; }
+    .hero-eyebrow { font-size: 0.65rem; }
+    .hero-title { font-size: clamp(2rem, 11vw, 2.8rem); letter-spacing: 0.02em; }
+    .hero-subtitle { font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.5rem; max-width: 100%; }
+    .hero-cta { flex-direction: column; gap: 0.75rem; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 1rem; font-size: 0.78rem; }
+    .hero-territory { flex-direction: column; gap: 0.3rem; align-items: flex-start; margin-top: 1.5rem; }
+    .hero-territory p { font-size: 0.62rem; }
+
+    /* About */
+    .about-strip { padding: 2.5rem 1rem; gap: 1.5rem; }
+    .about-heading { font-size: 1.7rem; }
+    .about-text { font-size: 0.92rem; }
+    .owner-quote { font-size: 0.88rem; padding: 0.7rem 1rem; margin: 1rem 0; }
+    .about-sig { font-size: 1rem; }
+
+    /* Services */
+    .services-section { padding: 2.5rem 1rem; }
+    .section-header { margin-bottom: 1.8rem; }
+    .section-header h2 { font-size: 1.7rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 1.5rem 1rem; }
+    .service-card h3 { font-size: 1.1rem; }
+    .service-card p { font-size: 0.87rem; }
+    .tab-bar { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+    .tab-btn { padding: 0.75rem 0.9rem; font-size: 0.68rem; letter-spacing: 0.08em; flex-shrink: 0; }
+    .timber-explainer { padding: 1rem 0; }
+    .timber-intro { max-width: 100%; }
+
+    /* Why Us */
+    .why-section { padding: 2.5rem 1rem; }
+    .why-inner { gap: 2rem; padding: 2.5rem 1rem; }
+    .why-text h2 { font-size: 1.7rem; }
+    .why-text p { font-size: 0.9rem; }
+    .pillar { gap: 0.75rem; }
+    .pillar-num { font-size: 1.6rem; min-width: 1.8rem; }
+    .pillar-body h4 { font-size: 1rem; }
+    .pillar-body p { font-size: 0.85rem; }
+
+    /* Service Area */
+    .area-section { padding: 2.5rem 1rem; }
+    .area-inner h2 { font-size: 1.7rem; }
+    .area-inner p { font-size: 0.9rem; }
+    .states-grid { gap: 0.6rem; }
+    .state-badge { padding: 0.55rem 0.9rem; font-size: 0.68rem; }
+
+    /* Contact */
+    .contact-section { padding: 2.5rem 1rem; }
+    .contact-inner { gap: 2rem; padding: 2.5rem 1rem; }
+    .contact-info h2 { font-size: 1.7rem; }
+    .contact-info p { font-size: 0.9rem; }
+    .contact-detail-text { font-size: 0.85rem; }
+    /* Prevent iOS auto-zoom on form focus */
+    .form-field input, .form-field select, .form-field textarea { font-size: 1rem; }
+    .form-field label { font-size: 0.68rem; }
+
+    /* Footer */
+    footer { padding: 1.8rem 1rem; gap: 0.8rem; flex-direction: column; text-align: center; }
+    .footer-logo { font-size: 0.85rem; }
+    .footer-text { font-size: 0.7rem; }
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex; gap: 0; flex-wrap: wrap;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--canopy-mid);
+  }
+  .tab-btn {
+    background: transparent;
+    border: none; border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    color: var(--stone);
+    padding: 0.9rem 1.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+    cursor: pointer; transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--lichen); }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom: 3px solid var(--gold);
+    background: rgba(200,151,58,0.06);
+  }
+  .tab-panel {
+    display: none;
+    animation: fadeTab 0.35s ease;
+  }
+  .tab-panel.active { display: block; }
+  @keyframes fadeTab {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Single-card tab: don't stretch full width */
+  .tab-panel .services-grid.single { grid-template-columns: repeat(1, 380px); }
+
+
+  /* ── HUNTENGAGE CARD ── */
+  .huntengage-card { border: 1px solid rgba(200,151,58,0.25); }
+  .he-logo { height: 36px; width: auto; margin-bottom: 0.8rem; display: block; border-radius: 3px; }
+  .he-link {
+    color: var(--gold); text-decoration: none; font-style: italic;
+    transition: color 0.2s;
+  }
+  .he-link:hover { color: var(--gold-light); text-decoration: underline; }
+  .he-btn {
+    display: inline-block; margin-top: 1rem;
+    padding: 0.55rem 1.3rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; transition: all 0.25s;
+  }
+  .he-btn:hover { background: var(--gold); color: var(--bark); }
+
+
+  /* ── OWNER QUOTE ── */
+  .owner-quote {
+    border-left: 3px solid var(--gold);
+    margin: 1.5rem 0;
+    padding: 0.8rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: var(--cream);
+    background: rgba(200,151,58,0.06);
+  }
+  .owner-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--lichen);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+
+  /* ── CREDENTIALS ── */
+  .credentials {
+    display: flex; flex-direction: column; gap: 0.55rem;
+    margin: 1.2rem 0 0.5rem;
+  }
+  .cred-item {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.88rem; color: var(--fog); line-height: 1.4;
+  }
+  .cred-icon { font-size: 1rem; flex-shrink: 0; width: 1.4rem; text-align: center; }
+  .cred-item span:last-child { color: var(--cream); }
+
+
+  /* ── TIMBER EXPLAINER ── */
+  .timber-explainer {
+    padding: 2rem 0;
+  }
+  .timber-intro {
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+  .timber-steps {
+    display: flex; flex-direction: column; gap: 0;
+    border-left: 2px solid var(--canopy-mid);
+    margin-left: 1rem;
+  }
+  .tstep {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding: 1.2rem 0 1.2rem 2rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .tstep::before {
+    content: ""; position: absolute; left: -6px; top: 1.6rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--canopy-mid);
+    transition: background 0.3s;
+  }
+  .tstep:hover::before { background: var(--gold); }
+  .tstep-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--canopy-light); opacity: 0.5;
+    min-width: 2.5rem; line-height: 1;
+    flex-shrink: 0;
+  }
+  .tstep strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: var(--gold);
+    margin-bottom: 0.3rem; font-weight: 700;
+  }
+  .tstep p { font-size: 0.88rem; color: var(--stone); line-height: 1.75; margin: 0; }
+
+
+  /* ── TIMBER PHOTO ── */
+  .timber-photo-wrap {
+    margin: 1.5rem 0 2.5rem;
+    position: relative;
+    max-width: 780px;
+  }
+  .timber-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.92) contrast(1.05);
+  }
+  .timber-photo-caption {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 0.6rem;
+    font-style: italic;
+  }
+
+
+  .he-hunt {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: #e8e8e8;
+    letter-spacing: 0.02em;
+    font-size: 1.1em;
+  }
+  .he-engage {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    color: #C8883A;
+    letter-spacing: 0.02em;
+    font-size: 1.1em;
+  }
+
+</style>
+
+<style>
+.services-section,.why-section,.area-section,.contact-section,footer{content-visibility:auto;contain-intrinsic-size:1px 800px}img{max-width:100%;height:auto}body{ text-rendering:optimizeLegibility;}</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+<a class="nav-logo" href="#"><img alt="ForestWild Consultants LLC" decoding="async" fetchpriority="high" height="424" src="assets/forestwild-logo.webp" width="633"/></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#area">Service Area</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-grain"></div>
+<!-- Tree silhouettes -->
+<div class="hero-trees">
+<svg preserveaspectratio="xMidYMax meet" viewbox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg">
+<!-- Pines and hardwoods silhouette row -->
+<g fill="#1C3A1E">
+<polygon points="120,400 140,250 100,260 150,140 110,155 160,20 170,20 220,155 180,140 230,260 190,250 210,400"></polygon>
+<polygon points="280,400 295,280 265,290 300,200 275,210 305,120 312,120 340,210 315,200 345,290 320,280 335,400"></polygon>
+<rect height="50" width="4" x="158" y="350"></rect>
+<polygon points="500,400 515,310 490,318 512,250 492,256 516,185 521,185 544,256 524,250 546,318 526,310 538,400"></polygon>
+<polygon points="640,400 668,260 630,275 665,170 635,183 672,60 680,60 718,183 685,170 720,275 682,260 710,400"></polygon>
+<rect height="40" width="8" x="676" y="360"></rect>
+<polygon points="850,400 870,295 845,303 868,235 848,241 872,170 878,170 902,241 882,235 905,303 880,295 895,400"></polygon>
+<polygon points="1000,400 1040,270 995,285 1035,170 1000,182 1042,60 1052,60 1095,182 1060,170 1100,285 1055,270 1090,400"></polygon>
+<rect height="40" width="8" x="1048" y="360"></rect>
+<polygon points="1200,400 1218,300 1196,308 1216,245 1198,251 1220,185 1226,185 1248,251 1230,245 1250,308 1228,300 1242,400"></polygon>
+<polygon points="1350,400 1375,265 1340,278 1370,175 1342,186 1376,75 1384,75 1418,186 1390,175 1420,278 1385,265 1410,400"></polygon>
+</g>
+</svg>
+</div>
+<div class="hero-content">
+<div class="hero-logo-wrap" style="margin-bottom:1.5rem;">
+<img alt="ForestWild Consultants LLC" decoding="async" fetchpriority="high" height="424" src="assets/forestwild-logo.webp" style="height:160px;width:auto;filter:drop-shadow(0 6px 32px rgba(0,0,0,0.8));animation:fadeUp 0.8s ease both;" width="633"/>
+</div>
+<div class="hero-eyebrow">Forest Management &amp; Wildlife Services</div>
+<h1 class="hero-title">
+<span class="drop-f">F</span><span class="rest">orest</span><span class="drop-w">W</span><span class="rest">ild</span>
+<span class="accent">Consultants, LLC</span>
+</h1>
+<p class="hero-subtitle">Professional forestry consulting rooted in the Southern landscape — stewarding timberland, wildlife, and the land's long-term legacy.</p>
+<div class="hero-cta">
+<a class="btn-primary" href="#contact">Request a Consultation</a>
+<a class="btn-outline" href="#services">Our Services</a>
+</div>
+<div class="hero-territory">
+<p><strong>Based in</strong> Florence, Alabama</p>
+<p>Serving <strong>AL · TN · MS</strong> &amp; surrounding states</p>
+</div>
+</div>
+</section>
+<!-- ABOUT -->
+<section id="about" style="margin-top: 4rem;">
+<div class="section-divider"></div>
+<div class="about-strip fade-in">
+<div>
+<p class="about-label">Who We Are</p>
+<h2 class="about-heading">Grounded in the <em>Southern Forest</em></h2>
+</div>
+<div>
+<p class="about-text">ForestWild Consultants LLC is a professional forestry and wildlife consulting firm headquartered in Florence, Alabama. We bring hands-on expertise in timber management, wildlife habitat enhancement, and land stewardship across the hardwood and pine forests of the Southeast.</p>
+<blockquote class="owner-quote">
+        “Across my career I’ve managed properties from 20 acres to 640,000 acres — family farms, institutional timberland, trust properties, military land. Every one of them was different. Every landowner had different goals. What stays the same is our approach: we look through your lens, not ours. We determine what your land needs to achieve your vision — and where that vision is still taking shape, we help bring it into focus.”
+      </blockquote>
+<div class="about-sig">Casey Newton <span class="owner-title">— Owner, ForestWild Consultants LLC</span></div>
+</div>
+</div>
+<div class="section-divider"></div>
+</section>
+<!-- SERVICES -->
+<section class="services-section" id="services">
+<div class="services-inner">
+<div class="section-header fade-in">
+<p class="label">What We Do</p>
+<h2>Forest &amp; Wildlife <span>Services</span></h2>
+</div>
+<!-- TAB BAR -->
+<div class="tab-bar fade-in">
+<button class="tab-btn active" onclick="switchTab('forestry')">🌲 Forest Management &amp; Timber Sales</button>
+<button class="tab-btn" onclick="switchTab('wildlife')">🦌 Wildlife</button>
+<button class="tab-btn" onclick="switchTab('landmgmt')">📋 Land Management</button>
+</div>
+<!-- TAB: FORESTRY -->
+<div class="tab-panel active" id="tab-forestry">
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">🌲</div>
+<h3>Forest Management Planning</h3>
+<p>Comprehensive forest management plans tailored to your land's species composition, soil types, and ownership goals. Timber stand improvement, reforestation, and long-range planning.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🔥</div>
+<h3>Prescribed Fire &amp; TSI</h3>
+<p>Prescribed burning plans and timber stand improvement treatments to reduce fuels, control competition, improve wildlife habitat, and restore open woodland structure.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🌱</div>
+<h3>Reforestation &amp; Site Prep</h3>
+<p>Seedling procurement, planting supervision, site preparation recommendations, and post-planting monitoring for pine, hardwood, and native species plantings.</p>
+</div>
+</div>
+<div style="margin-top:2rem;"><div class="timber-explainer">
+<div class="timber-intro">
+<div class="service-icon" style="font-size:2rem;margin-bottom:1rem;">🪵</div>
+<h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--cream);margin-bottom:0.8rem;">Timber Sales</h3>
+<p style="font-family:'DM Sans',sans-serif;color:var(--fog);font-size:0.95rem;line-height:1.8;margin-bottom:0.9rem;">Timber markets across the Southeast have been challenging and unpredictable over the past decade — and we won’t pretend otherwise. Every tract is different. The species, volume, product mix, and location all determine whether the timing is right for a sale and what that sale is likely to return.</p>
+<p style="font-family:'DM Sans',sans-serif;color:var(--fog);font-size:0.95rem;line-height:1.8;margin-bottom:0.9rem;">Our job is to give you an honest assessment. If your property has what it takes for a successful timber sale today, we’ll tell you — and we’ll go get you the best price the market will offer. If the timing isn’t right, we’ll be straight with you about that too, and we’ll put a plan in place to improve the stand, build value, and position your timber for a stronger sale when the market and your property are both ready.</p>
+<p style="font-family:'DM Sans',sans-serif;color:var(--gold-light);font-size:0.95rem;line-height:1.8;margin-bottom:1rem;font-weight:500;">What we won’t do is push you into a sale that doesn’t serve your interests.</p>
+</div>
+<div class="timber-photo-wrap">
+<img alt="Managed pine stand — ForestWild Consultants" class="timber-photo" decoding="async" height="640" loading="lazy" src="assets/managed-pine-stand.webp" width="480"/>
+<p class="timber-photo-caption">A well-managed loblolly pine stand ready for its next chapter</p>
+</div>
+</div>
+</div>
+</div></div>
+
+<!-- TAB: WILDLIFE -->
+<div class="tab-panel" id="tab-wildlife">
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">🦌</div>
+<h3>Wildlife Habitat Enhancement</h3>
+<p>Food plot design, habitat structure improvements, and prescribed management for white-tailed deer, turkey, quail, waterfowl, and non-game species.</p>
+</div>
+<div class="service-card huntengage-card">
+<div class="service-icon">🏕️</div>
+<a href="https://www.huntengage.com" target="_blank"><img alt="HuntEngage" class="he-logo" decoding="async" height="65" loading="lazy" src="assets/huntengage-logo.webp" width="322"/></a>
+<h3>Hunting Leases &amp; Leasing Services</h3>
+<p>For hunting lease listings, lease management, and leasing services, we proudly refer clients to our sister company — <strong><a class="he-link" href="https://www.huntengage.com" target="_blank">HuntEngage</a></strong> — the dedicated platform for connecting landowners and hunters across the South.</p>
+<a class="he-btn" href="https://www.huntengage.com" target="_blank">
+  Visit <span class="he-hunt">Hunt</span><span class="he-engage">Engage</span> →
+</a>
+</div>
+</div>
+</div>
+<!-- TAB: LAND MANAGEMENT -->
+<div class="tab-panel" id="tab-landmgmt">
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">📋</div>
+<h3>Boundary &amp; Inventory Services</h3>
+<p>Property line location, timber and land inventories, GIS mapping, and delineation of management compartments and habitat types for accurate planning.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">💰</div>
+<h3>Conservation Programs</h3>
+<p>Assistance enrolling in USDA programs including EQIP, RCPP, and CRP, as well as forest stewardship plans.</p>
+</div>
+</div>
+</div>
+
+</section>
+<!-- WHY US -->
+<section class="why-section">
+<div class="why-inner">
+<div class="why-text fade-in">
+<p style="font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--lichen);margin-bottom:0.8rem;">Why ForestWild</p>
+<h2>Local Expertise, <span>Long-Term</span> Thinking</h2>
+<p>We're not a national firm sending a stranger to walk your land. ForestWild Consultants is your neighbor — we understand the soils, the timber markets, the wildlife patterns, and the culture of the Southern forestlands we work in.</p>
+<p>Every acre is different. Every landowner has different goals. We listen first, then build a management strategy that reflects your land's true potential.</p>
+</div>
+<div class="pillars fade-in">
+<div class="pillar">
+<div class="pillar-num">01</div>
+<div class="pillar-body">
+<h4>Site-Specific Recommendations</h4>
+<p>On-the-ground assessments, not generic prescriptions. We walk your property and study your land before recommending anything.</p>
+</div>
+</div>
+<div class="pillar">
+<div class="pillar-num">02</div>
+<div class="pillar-body">
+<h4>Independent, Unbiased Advice</h4>
+<p>As consultants, we work for you — not for timber buyers, mills, or vendors. You receive objective guidance that serves your interests.</p>
+</div>
+</div>
+<div class="pillar">
+<div class="pillar-num">03</div>
+<div class="pillar-body">
+<h4>Multi-Resource Management</h4>
+<p>We integrate timber, wildlife, water, aesthetics, and recreational values into unified plans — because healthy forests deliver on every front.</p>
+</div>
+</div>
+<div class="pillar">
+<div class="pillar-num">04</div>
+<div class="pillar-body">
+<h4>Regulatory &amp; Program Knowledge</h4>
+<p>Navigating USDA programs, state forestry incentives, and environmental regulations so you capture every available benefit.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICE AREA -->
+<section class="area-section" id="area">
+<div class="area-inner fade-in">
+<p style="font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--lichen);margin-bottom:0.8rem;">Where We Work</p>
+<h2>Serving the <span>Southern Forest</span> Region</h2>
+<p>Based in Florence, Alabama, ForestWild Consultants serves landowners across the heart of the South's most productive forestland. We regularly work throughout Alabama, Tennessee, and Mississippi, and accept projects in neighboring states on a case-by-case basis.</p>
+<div class="states-grid">
+<div class="state-badge primary">Alabama ★</div>
+<div class="state-badge primary">Tennessee ★</div>
+<div class="state-badge primary">Mississippi ★</div>
+<div class="state-badge">Georgia</div>
+<div class="state-badge">Arkansas</div>
+<div class="state-badge">Florida Panhandle</div>
+<div class="state-badge">Kentucky</div>
+</div>
+<p style="font-size:0.8rem;color:var(--stone);">★ Primary service states  |  Other states considered — contact us to discuss your project</p>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<div class="contact-inner">
+<div class="contact-info fade-in">
+<p style="font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--lichen);margin-bottom:0.8rem;">Get In Touch</p>
+<h2>Start With a <span>Conversation</span></h2>
+<p>Ready to develop a management plan, sell timber, or improve your property's wildlife habitat? We'd love to learn about your land and your goals. Reach out to schedule an initial consultation.</p>
+<div class="contact-details">
+<div class="contact-detail">
+<div class="contact-detail-icon">📍</div>
+<div class="contact-detail-text">
+<strong>Office Location</strong>
+            Florence, Alabama 35630
+          </div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">📞</div>
+<div class="contact-detail-text">
+<strong>Phone</strong>
+            (256) 762-4617
+          </div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">✉️</div>
+<div class="contact-detail-text">
+<strong>Email</strong>
+<a href="mailto:forestwildconsultants@gmail.com">forestwildconsultants@gmail.com</a>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">🕐</div>
+<div class="contact-detail-text">
+<strong>Hours</strong>
+            Monday – Friday, 7:00 AM – 6:00 PM
+          </div>
+</div>
+</div>
+</div>
+<form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+<div class="form-row">
+<div class="form-field">
+<label>First Name</label>
+<input placeholder="John" type="text"/>
+</div>
+<div class="form-field">
+<label>Last Name</label>
+<input placeholder="Smith" type="text"/>
+</div>
+</div>
+<div class="form-row">
+<div class="form-field">
+<label>Phone</label>
+<input placeholder="" type="tel"/>
+</div>
+<div class="form-field">
+<label>Email</label>
+<input placeholder="you@email.com" type="email"/>
+</div>
+</div>
+<div class="form-field">
+<label>State / County</label>
+<input placeholder="e.g. Lauderdale County, AL" type="text"/>
+</div>
+<div class="form-field">
+<label>Service Needed</label>
+<select>
+<option value="">Select a service...</option>
+<option>Forest Management Planning</option>
+<option>Wildlife Habitat Enhancement</option>
+<option>Timber Sale / Harvesting</option>
+<option>Prescribed Fire / TSI</option>
+<option>Boundary &amp; Inventory</option>
+<option>Conservation Program Enrollment</option>
+<option>Hunting Lease Consulting</option>
+<option>Reforestation</option>
+<option>General Consultation</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-field">
+<label>Tell Us About Your Land &amp; Goals</label>
+<textarea placeholder="Approximate acreage, property type, current condition, and what you're hoping to achieve..." rows="5"></textarea>
+</div>
+<button class="btn-primary" style="align-self:flex-start" type="submit">Send Message →</button>
+</form>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<div class="footer-logo">
+    ForestWild Consultants LLC
+    
+  </div>
+<div class="footer-text">
+    © ForestWild Consultants, LLC<br/>
+    Forest Management &amp; Wildlife Services · Alabama · Tennessee · Mississippi
+  </div>
+</footer>
+<script>
+
+  // Form submit handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = '✓ Message Sent';
+    btn.style.background = 'var(--canopy-light)';
+    btn.disabled = true;
+  }
+
+  // Smooth nav highlight
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function switchTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
+</body>
+</html>
